@@ -73,17 +73,23 @@ if (isset($_GET["cat"]) && isset($_GET["subcat"])) {
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $catname; ?> <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<?php foreach ($cat as $subcat) { ?>
-								<li><a href="<?php echo $sitename . urli(strtolower($catname."/".$subcat)); ?>"><?php echo $subcat; ?></a></li>
+								<li><a href="<?php echo $siteurl . urli(strtolower($catname."/".$subcat)); ?>"><?php echo $subcat; ?></a></li>
 								<?php } ?>
 							</ul>
 						</li>
 						<?php } ?>
+						<li><a href="<?php echo $siteurl; ?>yhteystiedot">Yhteystiedot</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
 		<div class="container">
+			<?php
+				if ($_GET["cat"] == "yhteystiedot") {
+					include("yhteystiedot.php");
+				} else {
+			?>
 			<h2>Tuotteet</h2>
 			<?php foreach ($items as $item) { ?>
 			<hr>
@@ -97,9 +103,10 @@ if (isset($_GET["cat"]) && isset($_GET["subcat"])) {
 					<h4 class="media-heading"><?php echo $item["name"]; ?> - <?php echo $item["price"]; ?></h4>
 					<p><?php echo $item["description"]; ?></p>
 					<p>Kunto: <?php echo $item["condition"]; ?> - Varastossa: <?php echo $item["amount"]; ?></p>
-					<p><a href="<?php echo $sitename . urli(strtolower($item["category"])); ?>"><?php echo $item["category"]; ?></a> / <a href="<?php echo $sitename . urli(strtolower($item["category"]."/".$item["subcategory"])); ?>"><?php echo $item["subcategory"]; ?></a></p>
+					<p><a href="<?php echo $siteurl . urli(strtolower($item["category"])); ?>"><?php echo $item["category"]; ?></a> / <a href="<?php echo $siteurl . urli(strtolower($item["category"]."/".$item["subcategory"])); ?>"><?php echo $item["subcategory"]; ?></a></p>
 				</div>
 			</div>
+			<?php } ?>
 			<?php } ?>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
