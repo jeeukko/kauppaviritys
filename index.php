@@ -1,10 +1,10 @@
 <?php
 
-$siteurl = "http://bisnes.jeeukko.tech/";
-$sitename = "Samin Shoppi";
+$siteurl = "http://localhost/";
+$sitename = "Verkkokaupan kaltainen";
 
 require_once("functions.php");
-$items = array_map("str_getcsv", file("http://sampsi.net/jutut/bisnes_v2/taulukko.csv", FILE_SKIP_EMPTY_LINES));
+$items = array_map("str_getcsv", file("items.csv", FILE_SKIP_EMPTY_LINES));
 
 $keys = array_shift($items);
 foreach ($items as $i => $row) {
