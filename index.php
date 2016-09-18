@@ -34,6 +34,12 @@ if (isset($_GET["cat"]) && isset($_GET["subcat"])) {
 	}
 }
 
+foreach ($items as $i => $item) {
+	if ($item["amount"] == 0) {
+		unset($items[$i]);
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
